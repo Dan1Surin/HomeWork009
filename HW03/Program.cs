@@ -4,16 +4,19 @@
 
 // m = 2, n = 3 -> A(m,n) = 9
 
-int M = 5;
-int N = 100;
-int SUM=0;
+int N = 2;
+int M = 3;
 
 
-void N1numbers(int m, int n,int sum)
+static int Akkerman(int n, int m)
 {
-    sum=sum+m;
-    if(m==n)  {Console.WriteLine(sum); return;}
-    N1numbers(m+1,n,sum);
+  if (n == 0)
+    return m + 1;
+  else
+    if ((n != 0) && (m == 0))
+      return Akkerman(n - 1, 1);
+    else
+      return Akkerman(n - 1, Akkerman(n, m - 1));
 }
-
-N1numbers(M,N,SUM);
+int A = Akkerman(N,M);
+Console.WriteLine(A);
